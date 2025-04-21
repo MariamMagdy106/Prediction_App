@@ -1,0 +1,20 @@
+# Core dependencies
+fastapi==0.95.2
+uvicorn==0.22.0
+python-multipart==0.0.6
+
+# Data processing
+numpy==1.24.3
+pandas==2.0.2
+
+# Machine Learning
+tensorflow==2.12.0
+scikit-learn==1.2.2
+joblib==1.2.0
+
+# Type hints and validation
+pydantic==1.10.7
+typing-extensions==4.5.0
+
+# Optional (for development)
+python-dotenv==1.0.0
