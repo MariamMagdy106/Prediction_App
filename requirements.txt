@@ -4,7 +4,7 @@ uvicorn==0.22.0
 python-multipart==0.0.6
 
 # Data processing
-numpy==1.24.3
+numpy==1.22
 pandas==2.0.2
 
 # Machine Learning
