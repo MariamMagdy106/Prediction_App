@@ -14,7 +14,8 @@ import uvicorn
 
 
 
-WINDOW_SIZE_MS = int(1*60*1000)
+WINDOW_SIZE_MS = int(20*60*1000)
+WINDOW_SIZE = 240
 MODEL_DIR = Path("models") # Directory containing model files
 SCALER_DIR = Path("scalers") # Directory containing model files
 
@@ -62,7 +63,8 @@ def split_sequence_X(sequence, timestamps, window_size_ms):
         end_ix = last_leq_index(timestamps, i, timestamps[i] + window_size_ms)
         if end_ix == -1:
             break  # No more valid windows
-        X.append(sequence[i:end_ix])
+        if i!=end_ix:
+            X.append(sequence[i:end_ix])
     
     if not X:  # Check for empty output
         raise ValueError(
@@ -79,7 +81,7 @@ def preprocess_data(data: List[List[Union[str, float]]]) -> np.ndarray:
 
     # Generate sequences
     X = split_sequence_X(sequence,timestamps, WINDOW_SIZE_MS)
-    return pad_sequences(X, padding='post', maxlen=240, truncating='post', dtype='float32')
+    return pad_sequences(X, padding='post', maxlen=WINDOW_SIZE, truncating='post', dtype='float32')
 
     
 
