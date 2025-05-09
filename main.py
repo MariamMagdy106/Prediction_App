@@ -79,7 +79,8 @@ def preprocess_data(data: List[List[Union[str, float]]]) -> np.ndarray:
 
     # Generate sequences
     X = split_sequence_X(sequence,timestamps, WINDOW_SIZE_MS)
-    return pad_sequences(X, padding='post', dtype='float32')
+    return pad_sequences(X, padding='post', maxlen=240, truncating='post', dtype='float32')
+
     
 
 def f1_loss(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.Tensor:
